@@ -5,7 +5,7 @@ class Memcachedb < Formula
   homepage 'http://memcachedb.org'
   sha1 '6a87ee981808cefc5c1189f08e209be4e85834fd'
 
-  depends_on 'berkeley-db'
+  depends_on 'berkeley-db4'
   depends_on 'libevent'
 
   def install

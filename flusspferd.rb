@@ -3,7 +3,7 @@ require 'formula'
 class Flusspferd < Formula
   url 'https://github.com/Flusspferd/flusspferd/tarball/v0.9'
   homepage 'http://flusspferd.github.com/'
-  md5 '8d839b9ab25e1f3fcb9c0e48fb3538b9'
+  sha1 '36a0d085bb5b9a36bdb3d62660e9134bca0f6597'
 
   depends_on 'cmake' => :build
   depends_on 'arabica'

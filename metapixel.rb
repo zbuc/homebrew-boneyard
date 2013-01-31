@@ -3,7 +3,7 @@ require 'formula'
 class Metapixel < Formula
   homepage 'http://www.complang.tuwien.ac.at/schani/metapixel/'
   url 'http://www.complang.tuwien.ac.at/schani/metapixel/files/metapixel-1.0.2.tar.gz'
-  md5 'af5d77d38826756af213a08e3ada9941'
+  sha1 'f917aec91430b1bdbcc7b3dea29cb93f15a04c77'
 
   depends_on 'jpeg'
   depends_on 'giflib'

@@ -3,7 +3,7 @@ require 'formula'
 class Soprano < Formula
   homepage 'http://soprano.sourceforge.net/'
   url 'http://downloads.sourceforge.net/project/soprano/Soprano/2.6.0/soprano-2.6.0.tar.bz2'
-  md5 '03ae49e87c6ec99e57d0433c2650846f'
+  sha1 '72cc2e55597adbf9d2d0b416171d854fddbde503'
 
   depends_on 'cmake' => :build
   depends_on 'qt'

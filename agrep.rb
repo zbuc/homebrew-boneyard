@@ -3,7 +3,7 @@ require 'formula'
 class Agrep < Formula
   homepage 'http://en.wikipedia.org/wiki/Agrep'
   url 'ftp://ftp.cs.arizona.edu/agrep/agrep-2.04.tar.Z'
-  md5 'abc645404d3926a57c3f5e86a6e89ee9'
+  sha1 '862fa60832b175b9b0c3f43d792f7663a43902b7'
 
   def install
     system "make", "CFLAGS=#{ENV.cflags}"

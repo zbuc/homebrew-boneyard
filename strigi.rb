@@ -3,7 +3,7 @@ require 'formula'
 class Strigi < Formula
   homepage 'http://strigi.sourceforge.net/'
   url 'http://www.vandenoever.info/software/strigi/strigi-0.7.2.tar.bz2'
-  md5 'ca09ba176cf3ffe9afce4d92f38f9a85'
+  sha1 'b4c1472ef068536acf9c5c4c8f033a97f9c69f9f'
 
   depends_on 'cmake' => :build
   depends_on 'clucene'

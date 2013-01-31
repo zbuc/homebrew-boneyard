@@ -4,7 +4,7 @@ class Jwhois < Formula
   url 'http://ftpmirror.gnu.org/jwhois/jwhois-4.0.tar.gz'
   mirror 'http://ftp.gnu.org/gnu/jwhois/jwhois-4.0.tar.gz'
   homepage 'http://directory.fsf.org/project/jwhois/'
-  md5 '977d0ba90ee058a7998c94d933fc9546'
+  sha1 '4bd4a35cb0c2593284e7ef161f533a8184645174'
 
   # No whois entry in /etc/services. Use nicname instead.
   def patches; DATA; end

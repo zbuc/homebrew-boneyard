@@ -15,8 +15,8 @@ end
 
 class Texmf <Formula
   version '20080822'
-  url "ftp://ftp.openbsd.org/pub/OpenBSD/distfiles/texlive-#{version}-texmf.tar.lzma"
-  sha256 '72de2d7ac383f08e2bd5b6d45bea3e062b251dba9f3516c379c66dd13e25e18f'
+  url "ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma"
+  sha256 '112da34afd287340188ce73261ca4e57ea0242c3056f7a4b8a6094a063c54df3'
 
   def download_strategy
     CurlXZDownloadStrategy
@@ -27,9 +27,9 @@ class TexLive <Formula
   version '20080816'
   
   # OpenBSD mirrors are slower but more reliable
-  url "ftp://ftp.openbsd.org/pub/OpenBSD/distfiles/texlive-#{version}-source.tar.lzma"
+  url "ftp://tug.org/texlive/historic/2008/texlive-20080816-source.tar.lzma"
   homepage 'http://www.tug.org/texlive/'
-  md5 '554287c3e458da776edd684506048d45'
+  sha256 '60cf277a60311756ea51ed7e6c50b50d4069f4b4c007b11c114ca5c640e5a3c2'
 
   depends_on 'lzma'
   depends_on 'gd'

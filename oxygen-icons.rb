@@ -3,7 +3,7 @@ require 'formula'
 class OxygenIcons < Formula
   homepage 'http://www.oxygen-icons.org/'
   url 'ftp://ftp.kde.org/pub/kde/stable/4.6.0/src/oxygen-icons-4.6.0.tar.bz2'
-  md5 '47b943e1b8bc2c1cef10fd791ac70091'
+  sha1 'a5c9cdfd2ead610b3b7d763006802ee90afdb580'
 
   depends_on 'cmake' => :build
 

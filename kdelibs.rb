@@ -3,7 +3,7 @@ require 'formula'
 class Kdelibs < Formula
   homepage 'http://www.kde.org/'
   url 'ftp://www.mirrorservice.org/sites/ftp.kde.org/pub/kde/stable/4.6.0/src/kdelibs-4.6.0.tar.bz2'
-  md5 '9ee32f375809a42a4a8d512bd06a612b'
+  sha1 '6ea3fc69f98fa91c5159ccd743d4d548e801c7bc'
 
   depends_on 'cmake' => :build
   depends_on 'automoc4' => :build

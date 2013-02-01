@@ -3,7 +3,7 @@ require 'formula'
 class KdebaseRuntime < Formula
   homepage 'http://www.kde.org/'
   url 'ftp://ftp.kde.org/pub/kde/stable/4.6.0/src/kdebase-runtime-4.6.0.tar.bz2'
-  md5 '1f9d6bc64d7b84a74dd3ab06615c71ce'
+  sha1 '024b7035a410f7c08e501ea1250553e746a469d2'
 
   depends_on 'cmake' => :build
   depends_on 'kde-phonon'

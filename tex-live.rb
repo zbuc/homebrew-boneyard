@@ -16,7 +16,7 @@ end
 class Texmf <Formula
   version '20080822'
   url "ftp://ftp.openbsd.org/pub/OpenBSD/distfiles/texlive-#{version}-texmf.tar.lzma"
-  md5 'fa74072e1344e8390eb156bcda61a8b2'
+  sha256 '72de2d7ac383f08e2bd5b6d45bea3e062b251dba9f3516c379c66dd13e25e18f'
 
   def download_strategy
     CurlXZDownloadStrategy

@@ -5,7 +5,7 @@ class CurlXZDownloadStrategy < CurlDownloadStrategy
     # As far as I can tell, the LZMA format does not have any magic header bits that we could use to
     # identify LZMA archives in the CurlDownloadStrategy, so use this awesome hack
     safe_system "lzma -k --force --stdout --decompress #{@tarball_path} | /usr/bin/tar x"
-   
+
     # You could also do this, but it leaves the tar file lying around...
     #safe_system '/usr/local/bin/lzma', '-k', '--force', '--decompress', @tarball_path
     #safe_system '/usr/bin/tar', 'xf', @tarball_path.to_s.gsub( ".lzma", "" )
@@ -13,7 +13,7 @@ class CurlXZDownloadStrategy < CurlDownloadStrategy
   end
 end
 
-class Texmf <Formula
+class Texmf < Formula
   version '20080822'
   url "ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma"
   sha256 '112da34afd287340188ce73261ca4e57ea0242c3056f7a4b8a6094a063c54df3'
@@ -23,21 +23,24 @@ class Texmf <Formula
   end
 end
 
-class TexLive <Formula
-  version '20080816'
-  
+class TexLive < Formula
   # OpenBSD mirrors are slower but more reliable
   url "ftp://tug.org/texlive/historic/2008/texlive-20080816-source.tar.lzma"
   homepage 'http://www.tug.org/texlive/'
   sha256 '60cf277a60311756ea51ed7e6c50b50d4069f4b4c007b11c114ca5c640e5a3c2'
 
-  depends_on 'lzma'
+  depends_on 'xz' => :build
   depends_on 'gd'
+  depends_on :x11
+
+  fails_with :llvm
+
+  env :std
 
   def download_strategy
     CurlXZDownloadStrategy
   end
-  
+
   def patches
     # Steal all the TexLive 2008 OpenBSD patches
     patches = [
@@ -98,35 +101,31 @@ class TexLive <Formula
 
   def install
     # Notes:
-    # Several OSX-specific files (texk/web2c/xetexdir/XeTeXFontMgr_Mac.mm and others) can't build in 
+    # Several OSX-specific files (texk/web2c/xetexdir/XeTeXFontMgr_Mac.mm and others) can't build in
     # 64 bit mode on OSX, since they use deprecated functions only available when building in 32bit.
-    fails_with_llvm
     ENV.m32
     ENV.deparallelize
-    
+
     #Some of the makefiles doesn't use CFLAGS during linking, which causes things to break when building as 32bit.
     # Ugly hack to force -m32 always and forever.
     ENV['CC']="gcc-4.2 -m32 -arch i386"
     ENV['CXX']="g++-4.2 -m32 -arch i386"
     # I even had to patch a Makefile since it hardcoded using cc and c++, see below.
 
-    # Is there a way to get these programmatically?
-    # no, but they will always be these directories on OS X --mxcl
-    x11_libdir = "/usr/X11/lib/"
-    x11_includedir = "/usr/X11/include/"
-    
+    x11_libdir = MacOS::X11.lib
+    x11_includedir = MacOS::X11.include
+
     # The build scripts don't create this directory for no apparent reason...
     # It's easier to just do it here than it is to patch the Makefiles
     # Actually, if compilation fails brew thinks that we succeeded because this directory exists. Maybe we should patch the makefiles...
-    FileUtils.mkdir_p "#{man}/man5"
-    
+    man5.mkpath
+
     # Replaces the texk_kpathsea_texmf_cnf OpenBSD patch with our own version
-    inreplace "texk/kpathsea/texmf.cnf", "$SELFAUTOPARENT/", "#{prefix}/share/"
-    
+    inreplace "texk/kpathsea/texmf.cnf", "$SELFAUTOPARENT/", "#{share}/"
+
     build_dir='Work'
-    
-    FileUtils.mkdir build_dir
-    Dir.chdir build_dir do
+
+    mkdir build_dir do
       system "../configure", "--prefix=#{prefix}/", "--datadir=#{prefix}/", \
       "--with-xdvi-x-toolkit=xaw", "--disable-threads", "--with-old-mac-fonts", "--without-xindy", \
       "--x-libraries=#{x11_libdir}", "--x-includes=#{x11_includedir}", \
@@ -136,15 +135,15 @@ class TexLive <Formula
       "--with-system-zlib", "--with-system-gd", \
       "--disable-multiplatform", "--without-texinfo", "--without-xdvipdfmx", \
       "--without-texi2html", "--without-psutils"
-      
+
       system "make world"
     end
 
     # Installs texmf, which has necessary support files for tex-live
-    Texmf.new.brew{ 
+    Texmf.new.brew{
       # Update a conf file to use the proper directories, replaces OpenBSD patch
       # Yes, this file exists in both tex-live and texmf. With this change they're identical, though.
-      inreplace "texmf/web2c/texmf.cnf", "$SELFAUTOPARENT/", "#{prefix}/share/"
+      inreplace "texmf/web2c/texmf.cnf", "$SELFAUTOPARENT/", "#{share}/"
       share.install Dir['*']
     }
 
@@ -160,7 +159,7 @@ end
 
 # Notes for below:
 # Patch 1: No idea why this declaration is wrong, but we'll go ahead and fix it.
-# Patch 2: Slightly modified patch from OpenBSD. Adding the _XOPEN_SOURCE preprocessor flag in 
+# Patch 2: Slightly modified patch from OpenBSD. Adding the _XOPEN_SOURCE preprocessor flag in
 #   libs/lua51/Makefile undeprecates some things in /usr/include/ucontext.h (Snow Leopard).
 # Patch 3: These are hardcoded and do not respect CFLAGS, so force them to use 32bit mode.
 __END__

@@ -15,17 +15,15 @@ end
 
 class Texmf < Formula
   version '20080822'
-  url "ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma"
+  url "ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma",
+    :using => CurlXZDownloadStrategy
   sha256 '112da34afd287340188ce73261ca4e57ea0242c3056f7a4b8a6094a063c54df3'
-
-  def download_strategy
-    CurlXZDownloadStrategy
-  end
 end
 
 class TexLive < Formula
   # OpenBSD mirrors are slower but more reliable
-  url "ftp://tug.org/texlive/historic/2008/texlive-20080816-source.tar.lzma"
+  url "ftp://tug.org/texlive/historic/2008/texlive-20080816-source.tar.lzma",
+    :using => CurlXZDownloadStrategy
   homepage 'http://www.tug.org/texlive/'
   sha256 '60cf277a60311756ea51ed7e6c50b50d4069f4b4c007b11c114ca5c640e5a3c2'
 
@@ -36,10 +34,6 @@ class TexLive < Formula
   fails_with :llvm
 
   env :std
-
-  def download_strategy
-    CurlXZDownloadStrategy
-  end
 
   def patches
     # Steal all the TexLive 2008 OpenBSD patches

@@ -20,6 +20,7 @@ class Kdelibs < Formula
   depends_on 'd-bus'
   depends_on 'qt'
   depends_on 'libdbusmenu-qt'
+  depends_on :x11
 
   def patches
     # To fix https://bugs.kde.org/show_bug.cgi?id=209903. Committed upstream.
@@ -28,7 +29,6 @@ class Kdelibs < Formula
   end
 
   def install
-    ENV.x11
     gettext_prefix = Formula.factory('gettext').prefix
     docbook_prefix = Formula.factory('docbook').prefix
     docbook_dtd = "#{docbook_prefix}/docbook/xml/4.5"

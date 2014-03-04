@@ -5,12 +5,11 @@ class Pulseaudio < Formula
   url 'http://freedesktop.org/software/pulseaudio/releases/pulseaudio-2.1.tar.gz'
   sha1 '957399478456c1dd5632bc84e9ee06a07a9c4c9c'
 
-  head 'git://anongit.freedesktop.org/pulseaudio/pulseaudio'
-
   option "with-dbus", "Enable dbus"
 
-  # Dependencies from http://www.freedesktop.org/wiki/Software/PulseAudio/Ports/OSX
-  if build.head?
+  head do
+    url 'git://anongit.freedesktop.org/pulseaudio/pulseaudio'
+
     depends_on :autoconf
     depends_on :automake
     depends_on :libtool

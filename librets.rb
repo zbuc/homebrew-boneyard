@@ -5,10 +5,10 @@ class Librets < Formula
   url 'http://www.crt.realtors.org/projects/rets/librets/files/librets-1.5.3.tar.gz'
   sha1 '2de4d9e9cb26533eb0a9a090b3354a70ed3c41ec'
 
-  depends_on 'boost149'
+  depends_on 'homebrew/versions/boost149'
 
   def install
-    old_boost = Formula.factory("boost149")
+    old_boost = Formula.factory['boost149']
     system "./configure", "--disable-debug",
                           "--enable-shared_dependencies",
                           "--prefix=#{prefix}",

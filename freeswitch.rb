@@ -3,7 +3,6 @@ require 'formula'
 class Freeswitch < Formula
   homepage 'http://freeswitch.org'
   url 'git://git.freeswitch.org/freeswitch.git', :tag => 'v1.2.0'
-  version '1.2.0'
 
   head 'git://git.freeswitch.org/freeswitch.git'
 

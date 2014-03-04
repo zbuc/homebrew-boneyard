@@ -2,7 +2,7 @@ require 'formula'
 
 class Denyhosts < Formula
   homepage 'http://denyhosts.sourceforge.net/'
-  url 'http://downloads.sourceforge.net/project/denyhosts/denyhosts/2.6/DenyHosts-2.6.tar.gz'
+  url 'https://downloads.sourceforge.net/project/denyhosts/denyhosts/2.6/DenyHosts-2.6.tar.gz'
   sha1 '02143843cb7c37c986c222b7acc11f7b75eb7373'
 
   depends_on :python

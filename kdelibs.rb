@@ -3,7 +3,7 @@ require 'formula'
 class Kdelibs < Formula
   homepage 'http://www.kde.org/'
   url 'http://download.kde.org/stable/4.9.5/src/kdelibs-4.9.5.tar.xz'
-  md5 '2155d7ae075a1c7e9c6398b381c67177'
+  sha1 '899a58c5cf2115a1a18fb1690c99b2b3815975c6'
 
   depends_on 'cmake' => :build
   depends_on 'automoc4' => :build
@@ -23,8 +23,8 @@ class Kdelibs < Formula
   depends_on :x11
 
   def install
-    gettext_prefix = Formula.factory('gettext').prefix
-    docbook_prefix = Formula.factory('docbook').prefix
+    gettext_prefix = Formula['gettext'].prefix
+    docbook_prefix = Formula['docbook'].prefix
     docbook_dtd = "#{docbook_prefix}/docbook/xml/4.5"
     docbook_xsl = Dir.glob("#{docbook_prefix}/docbook/xsl/*").first
     mkdir 'build' do

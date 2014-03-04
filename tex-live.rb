@@ -13,13 +13,6 @@ class CurlXZDownloadStrategy < CurlDownloadStrategy
   end
 end
 
-class Texmf < Formula
-  version '20080822'
-  url "ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma",
-    :using => CurlXZDownloadStrategy
-  sha256 '112da34afd287340188ce73261ca4e57ea0242c3056f7a4b8a6094a063c54df3'
-end
-
 class TexLive < Formula
   # OpenBSD mirrors are slower but more reliable
   url "ftp://tug.org/texlive/historic/2008/texlive-20080816-source.tar.lzma",
@@ -34,6 +27,12 @@ class TexLive < Formula
   fails_with :llvm
 
   env :std
+
+  resource 'texmf' do
+    url 'ftp://tug.org/texlive/historic/2008/texlive-20080822-texmf.tar.lzma',
+      :using => CurlXZDownloadStrategy
+    sha256 '112da34afd287340188ce73261ca4e57ea0242c3056f7a4b8a6094a063c54df3'
+  end
 
   def patches
     # Steal all the TexLive 2008 OpenBSD patches
@@ -134,12 +133,12 @@ class TexLive < Formula
     end
 
     # Installs texmf, which has necessary support files for tex-live
-    Texmf.new.brew{
+    resource("texmf").stage do
       # Update a conf file to use the proper directories, replaces OpenBSD patch
       # Yes, this file exists in both tex-live and texmf. With this change they're identical, though.
       inreplace "texmf/web2c/texmf.cnf", "$SELFAUTOPARENT/", "#{share}/"
       share.install Dir['*']
-    }
+    end
 
     # The texlive makefiles are supposed to do this, I don't know why they don't...
     #We need this ugly path hack because texlinks and fmtutil-sys call other scripts in bin

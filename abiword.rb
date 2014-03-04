@@ -31,8 +31,8 @@ class Abiword < Formula
       :p0 => "https://trac.macports.org/export/102401/trunk/dports/editors/abiword-x11/files/patch-libpng-1.5.diff",
       # Fixes bad glib include
       :p1 => DATA
-    }
-  end if build.stable?
+    } if build.stable?
+  end
 
   def install
     system "./configure", "--disable-debug", "--disable-dependency-tracking",

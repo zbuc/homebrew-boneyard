@@ -5,11 +5,9 @@ class Jscoverage < Formula
   url 'http://siliconforks.com/jscoverage/download/jscoverage-0.5.1.tar.bz2'
   sha1 '0d655296b593beb15c2261d97df314572ebd7319'
 
-  def patches
-    # Fixes compile errors with clang, int main should return a value
-    # Reported upstream: http://siliconforks.com/jscoverage/bugs/42
-    DATA
-  end
+  # Fixes compile errors with clang, int main should return a value
+  # Reported upstream: http://siliconforks.com/jscoverage/bugs/42
+  patch :DATA
 
   def install
     # Fix a hardcoded gcc and g++ configure error when clang.

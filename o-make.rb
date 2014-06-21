@@ -9,12 +9,10 @@ class OMake < Formula
   depends_on 'readline'
   depends_on 'objective-caml'
 
-  def patches
-    # skip all warnings that can happen with newer versions of ocamlc. Also,
-    # work around a faulty readline detection, see
-    # http://bugzilla.metaprl.org/cgi-bin/show_bug.cgi?id=740.
-    DATA
-  end
+  # skip all warnings that can happen with newer versions of ocamlc. Also,
+  # work around a faulty readline detection, see
+  # http://bugzilla.metaprl.org/cgi-bin/show_bug.cgi?id=740.
+  patch :DATA
 
   def install
     system "make", "install", "PREFIX=#{prefix}"

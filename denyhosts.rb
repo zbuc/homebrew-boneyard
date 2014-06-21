@@ -8,7 +8,7 @@ class Denyhosts < Formula
   depends_on :python
 
   # Copies of daemon-control-dist & denyhosts.cfg-dist edited for OS X.
-  def patches; DATA; end
+  patch :DATA
 
   def install
     # If the `libpath` is relative, instead of absolute, we can influence the

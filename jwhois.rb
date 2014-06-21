@@ -7,7 +7,7 @@ class Jwhois < Formula
   sha1 '4bd4a35cb0c2593284e7ef161f533a8184645174'
 
   # No whois entry in /etc/services. Use nicname instead.
-  def patches; DATA; end
+  patch :DATA
 
   def install
     # link fails on libiconv if not added here

@@ -2,7 +2,7 @@ require 'formula'
 
 class Wkhtmltopdf < Formula
   homepage 'http://code.google.com/p/wkhtmltopdf/'
-  url 'http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1.tar.bz2'
+  url 'https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1.tar.bz2'
   sha1 'db03922d281856e503b3d562614e3936285728c7'
   version '0.11.0_rc1'
 

@@ -52,7 +52,7 @@ class Freeswitch < Formula
     EOS
   end
 
-  def test
+  test do
     system "#{bin}/freeswitch", "-version"
   end
 end

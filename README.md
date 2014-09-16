@@ -1,21 +1,15 @@
 Homebrew-boneyard
 =================
 
-[![Boneyard banner](http://i.imgur.com/flEmY.png) ](http://www.flickr.com/photos/72213316@N00/5732778952)
+This repository contains formulae that were removed from other repositories.
+Common reasons for retiring formulae to the boneyard include lack of upstream
+maintenance or problems integrating with Homebrew's packaging requirements.
+Broken formulae are migrated here as an alternative to allowing hard work and
+valuable knowledge to fade into git history.
 
-This repository contains formulae that were removed from other repositories in
-the Homebrew ecosystem. Common reasons for retiring formulae to the boneyard
-are lack of maintenance/upstream activity or insurmountable issues that
-remained unsolved for too long. Broken formulae are migrated here as an
-alternative to allowing hard work and valuable knowledge to fade into git
-history. For some formulae, a little restoration work could return them to the
-main repositories.
-
-We welcome issues that discuss the problems facing specific builds and pull
-requests that improve the usability of the formulae interred here. However, be
-mindful that everything in the boneyard is here for the same reason: it is
-broken or unreliable. No issue is guarenteed to get a response, let alone a
-solution.
+With a little work, some of these formulae could be restored to the main
+repositories, but they are not actively maintained or kept up-to-date in this
+repository.
 
 Welcome to the boneyard, perhaps you can dig up something interesting!
 

@@ -41,7 +41,8 @@ class Dsniff < Formula
     "https://trac.macports.org/export/90933/trunk/dports/net/dsniff-devel/files/patch-trigger.h.diff",
     "https://trac.macports.org/export/90933/trunk/dports/net/dsniff-devel/files/patch-urlsnarf.c.diff",
     "https://trac.macports.org/export/90933/trunk/dports/net/dsniff-devel/files/patch-webmitm.c.diff",
-    "https://trac.macports.org/export/90933/trunk/dports/net/dsniff-devel/files/patch-webspy.c.diff"
+    "https://trac.macports.org/export/90933/trunk/dports/net/dsniff-devel/files/patch-webspy.c.diff",
+    "https://gist.githubusercontent.com/zbuc/bfcdfbccffdfe58e55b0/raw/c5191109a6da0fe17b140dd0cef4dd0748f82ea1/patch-zbuc.diff"
   ]}
   end
 
